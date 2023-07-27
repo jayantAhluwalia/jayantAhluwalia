@@ -1,0 +1,110 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0f0f0f;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+.main-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-box {
+  font-size: 4em;
+  margin: 2em auto;
+  position: relative; /* Required for the sliding animation */
+  overflow: hidden; /* Hide the overflow to hide the old text during the hover effect */
+}
+.hello-text,
+.I-am-text,
+.name-text {
+  color: #ea0f1e;
+  transform-origin: bottom;
+  opacity: 0;
+  position: absolute; /* Required for the sliding animation */
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.3s ease-in-out; /* Add a transition for opacity change on hover */
+}
+
+.hello-text {
+  animation: rise-up 1.5s ease-out forwards;
+}
+
+.I-am-text {
+  animation: animate 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) 0.6s forwards; /* Apply the 'animate' animation to the first heading with a 0.6s delay */
+}
+
+.name-text {
+  animation: animate 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) 0.9s forwards; /* Apply the 'animate' animation to the second heading with a 0.9s delay */
+}
+
+/* Keyframes for the rise-up animation */
+@keyframes rise-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30vh); /* Start the headings 30vh below their original position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%); /* Move the headings back to their original position */
+  }
+}
+
+/* Keyframes for the animate animation */
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translateY(30vh); /* Start the headings 30vh below their original position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%); /* Move the headings back to their original position */
+  }
+}
+
+/* Hover styles to show the new text with sliding animation */
+.text-box:hover .I-am-text::after,
+.text-box:hover .name-text::after {
+  content: attr(data-hover-text); /* Set the new text using the 'data-hover-text' attribute on hover */
+  position: absolute;
+  top: 0;
+  left: 100%; /* Position the new text to the right of the original heading */
+  opacity: 0; /* Initially hide the new text */
+  white-space: nowrap; /* Prevent the new text from wrapping to a new line */
+  transition: left 0.3s ease-in-out, opacity 0.3s; /* Add transitions for sliding and fading effect on hover */
+}
+
+.text-box:hover .I-am-text::after {
+  left: 0; /* Slide the new text into view from the right */
+  opacity: 1; /* Show the new text */
+}
+
+.text-box:hover .name-text::after {
+  left: 0; /* Slide the new text into view from the right */
+  opacity: 1; /* Show the new text */
+}

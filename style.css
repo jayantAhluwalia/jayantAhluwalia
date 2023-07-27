@@ -1,0 +1,126 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0f0f0f;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+  color: white;
+}
+
+.bg-photo img {
+  width: 800px;
+  width: 600px;
+  background-repeat: no-repeat;
+  transition: left 0.3s ease-in-out, opacity 0.3s;
+  background-size: cover;
+}
+
+.main-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 0.4em;
+  padding: 0.1em;
+}
+.text-box {
+  font-size: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.hello-text {
+  transform-origin: bottom;
+  color: #0f0f0f;
+  animation: rise-up 1.5s ease-out forwards;
+  opacity: 0;
+  animation: animate 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) 0.1s forwards; /* Apply the 'animate' animation to the first heading */
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.I-am-text,
+.name-text {
+  color: #ea0f1e;
+  transform-origin: bottom;
+  opacity: 0;
+  transition: left 0.3s ease-in-out, opacity 0.3s;
+}
+
+.I-am-text {
+  animation: animate 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) 0.2s forwards; /* Apply the 'animate' animation to the first heading */
+}
+
+.name-text {
+  animation: animate 0.6s cubic-bezier(0.2, 0.6, 0.2, 1) 0.3s forwards; /* Apply the 'animate' animation to the second heading with a 0.3s delay */
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translateY(30vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.hello-div,
+.i-am-div {
+  /* width: 100%; */
+  /* height: 100%; */
+}
+
+.show-me-on-hover,
+.show-i-am,
+.show-name {
+  display: none;
+  width: 100%;
+}
+
+.show-me-on-hover {
+  color: black;
+}
+
+.show-i-am,
+.show-name {
+  color: red;
+}
+
+.hello-div:hover .show-me-on-hover,
+.i-am-div:hover .show-i-am,
+.name-div:hover .show-name {
+  display: block;
+  cursor: pointer;
+}
+
+.hello-div:hover .hello-text,
+.i-am-div:hover .I-am-text,
+.name-div:hover .name-text {
+  display: none;
+  animation-play-state: paused;
+}
